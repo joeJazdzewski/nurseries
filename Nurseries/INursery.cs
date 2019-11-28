@@ -5,6 +5,6 @@ namespace Nurseries
 {
     public interface INursery : IDisposable
     {
-        Task StartSoon()
+        Task StartSoon(Action action);
     }
 }
