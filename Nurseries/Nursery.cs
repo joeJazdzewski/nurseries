@@ -16,8 +16,12 @@ namespace Nurseries
 
         public Task StartSoon(Action action) 
         {
+            
+            var lastTask = tasks.LastOrDefault();
+            if(lastTask != null)
+                Task.WaitAll(lastTask);
+                
             Task task = Task.Run(action);
-            Task.WaitAll(tasks.Last());
             tasks.Add(task);
             return task;
         }
